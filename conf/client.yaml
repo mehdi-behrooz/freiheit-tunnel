@@ -1,0 +1,22 @@
+services:
+${services}
+chains:
+  - name: chain-0
+    hops:
+      - name: hop-0
+        nodes:
+          - name: node-0
+            addr: ${SERVER_HOST}:${SERVER_PORT}
+            connector:
+              type: relay
+              auth:
+                username: ${USERNAME}
+                password: ${PASSWORD}
+            dialer:
+              type: wss
+              tls:
+                serverName: ${SERVER_HOST}
+log:
+  level: ${LOG_LEVEL}
+  output: stdout
+  format: json

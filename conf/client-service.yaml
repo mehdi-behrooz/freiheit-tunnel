@@ -1,0 +1,12 @@
+  - name: service-${number}
+    addr: ${remote_dest}
+    handler:
+      type: rtcp
+    listener:
+      type: rtcp
+      chain: chain-0
+    forwarder:
+      nodes:
+        - name: target-0
+          addr: ${local_dest}
+
