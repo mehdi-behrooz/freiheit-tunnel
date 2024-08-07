@@ -1,6 +1,6 @@
 services:
   - name: service-0
-    addr: :${LISTEN_ON}
+    addr: :443
     handler:
       type: relay
       auth:

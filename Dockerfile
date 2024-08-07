@@ -22,9 +22,6 @@ ENV MODE=server
 ENV USERNAME=admin
 ENV PASSWORD=
 
-# for server:
-ENV LISTEN_ON=8443
-
 # for client:
 ENV SERVER_HOST=example.com
 ENV SERVER_PORT=8443
