@@ -35,4 +35,4 @@ CMD ["/bin/gost", "-C", "/etc/gost.yaml"]
 HEALTHCHECK --interval=15m \
     --start-interval=30s \
     --start-period=30s \
-    CMD $MODE=server && nc -z localhost:443 || $MODE=client && pgrep /bin/gost || exit 1
+    CMD [[ $MODE = server ]] && nc -z localhost:443 || [[ $MODE = client ]] && pgrep /bin/gost || exit 1
