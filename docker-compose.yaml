@@ -1,0 +1,37 @@
+services:
+  vitrin1:
+    container_name: vitrin1
+    image: ghcr.io/mehdi-behrooz/freiheit-vitrin:latest
+    environment:
+      - HEADING=This is vitrin 1
+
+  vitrin2:
+    container_name: vitrin2
+    image: ghcr.io/mehdi-behrooz/freiheit-vitrin:latest
+    environment:
+      - HEADING=This is vitrin 2
+
+  server:
+    build: .
+    container_name: server
+    ports:
+      - 8001:8001
+      - 8002:8002
+    environment:
+      - MODE=server
+      - LISTEN_ON=8443
+      - USERNAME=my_username
+      - PASSWORD=my_password
+      - LOG_LEVEL=debug
+
+  client:
+    build: .
+    container_name: client
+    environment:
+      - MODE=client
+      - SERVER_HOST=server
+      - SERVER_PORT=8443
+      - USERNAME=my_username
+      - PASSWORD=my_password
+      - MAP=:8001>vitrin1:80;:8002>vitrin2:80
+      - LOG_LEVEL=debug
