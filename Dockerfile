@@ -28,6 +28,6 @@ ENTRYPOINT ["/entrypoint.sh"]
 CMD ["/bin/gost", "-C", "/etc/gost.yaml"]
 
 HEALTHCHECK --interval=15m \
-    --start-interval=30s \
-    --start-period=30s \
+    --start-period=5m \
+    --start-interval=10s \
     CMD [[ $MODE = server ]] && nc -z localhost $LISTEN_ON || [[ $MODE = client ]] && pgrep /bin/gost || exit 1
